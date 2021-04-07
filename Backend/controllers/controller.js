@@ -16,8 +16,8 @@ exports.create = (req, res) => {
   const date = req.body.formatedDate;
   const time = req.body.formatedTime;
 
-  let sql = 'INSERT INTO bookings (name, email, date, time) VALUES (?,?,?,?); ' ;
-  db.query(sql, [name, email, req.body.formatedDate, time], (err, result, fields)=> {
+  let sql = 'INSERT INTO bookings (name, email, date, time) VALUES (?,?,?,?); ';
+  db.query(sql, [name, email, date, time], (err, result, fields)=> {
     if (err) throw err;
     let newId=result.insertId;
     sql = `SELECT * FROM bookings WHERE id = ${newId}` ;
@@ -37,4 +37,8 @@ exports.delete = (req, res) => {
       if (err) throw err;
       res.status(200).send(result);
     });
+};
+
+exports.questions = (req, res) => {
+  res.status(200).send("test");
 };

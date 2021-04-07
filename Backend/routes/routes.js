@@ -8,6 +8,8 @@ module.exports = app => {
     router.post("/", controller.create);
 
     router.delete("/:id", controller.delete);
+
+    router.get("/questions", controller.questions);
   
     app.use('/', router);
   };
